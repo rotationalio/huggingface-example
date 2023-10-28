@@ -1,11 +1,9 @@
+torch
 accelerate
 datasets
 evaluate
 numpy
 pandas
-pyensign==0.7.3b0
+pyensign==v0.12b0
 scikit-learn
-torch==1.13.0
 transformers
-xformers
-

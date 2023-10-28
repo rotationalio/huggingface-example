@@ -3,7 +3,13 @@ Sample NLP streaming workflow using an LLM from Hugging Face and PyEnsign
 
 This is an example of a sentiment analysis application using sample yelp ratings data from [Kaggle](https://www.kaggle.com) using [Hugging Face](https://huggingface.co) and [PyEnsign](https://github.com/rotationalio/pyensign).
 
-In order to use PyEnsign, create a free account on [Rotational.app](https://rotational.app/), generate and download API Keys.  You will need to create and source the following environment variables prior to running the example:
+To use PyEnsign, create a free account on [rotational.app](https://rotational.app/).  You will need to do the following once you create an account:
+
+- [Create a project.](https://youtu.be/VskNgAVMORQ)
+- Add the following topic to the project: `yelp_data`.  Check out this [video](https://youtu.be/1XuVPl_Ki4U) on how to add a topic.  You can choose your own names for the topic but make sure that you update the code accordingly.
+- [Generate API keys for your project.](https://youtu.be/KMejrUIouMw)
+
+You will need to create and source the following environment variables prior to running the example:
 
 ```
 export ENSIGN_CLIENT_ID="your client id here"
