@@ -44,10 +44,11 @@ class HuggingFaceTrainer:
             "optim": "adamw_torch",
             "weight_decay": 0.01,
             "save_strategy": "epoch",
-            "evaluation_strategy": "epoch",
+            "eval_strategy": "epoch",
             "metric_for_best_model": "f1_true",
             "load_best_model_at_end": True,
             "push_to_hub": False,
+            "use_cpu": True,
         }
         # select the tokenizer
         self.tokenizer=DistilBertTokenizer.from_pretrained(

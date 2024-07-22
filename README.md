@@ -26,30 +26,30 @@ This application consists of three components:
 ### Create a virtual environment
 
 ```
-$ virtualenv venv
+virtualenv venv
 ```
 
 ### Activate the virtual environment
 
 ```
-$ source venv/bin/activate
+source venv/bin/activate
 ```
 
 ### Install the required packages
 
 ```
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ### Open three terminal windows
 
 #### Run the Trainer in the first window (make sure to activate the virtual environment first).  This will create three checkpoint directories under the `trained_models` directory and the final model configurations and weights in the `final_model` directory.
 ```
-$ source venv/bin/activate
+source venv/bin/activate
 ```
 
 ```
-$ python huggingface_trainer.py
+python huggingface_trainer.py
 ```
 
 #### Once the training is complete, run the Scorer in the second window (make sure to activate the virtual environment first)
@@ -57,15 +57,15 @@ $ python huggingface_trainer.py
 $ source venv/bin/activate
 ```
 ```
-$ python huggingface_scorer.py score
+python huggingface_scorer.py score
 ```
 
 #### Run the ScoreDataPublisher in the third window (make sure to activate the virtual environment first)
 ```
-$ source venv/bin/activate
+source venv/bin/activate
 ```
 ```
-$ python huggingface_scorer.py score_data
+python huggingface_scorer.py score_data
 ```
 
 

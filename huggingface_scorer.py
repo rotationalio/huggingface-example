@@ -50,8 +50,6 @@ class ScoreDataPublisher:
         asyncio.get_event_loop().run_until_complete(self.publish())
 
     async def publish(self):
-        # create the topic if it does not exist
-        await self.ensign.ensure_topic_exists(self.topic)
         score_df = pd.read_csv(os.path.join("data", "yelp_score.csv"))
         score_dict = score_df.to_dict("records")
         for record in score_dict:
@@ -118,8 +116,6 @@ class HuggingFaceScorer:
         print(f"prediction: {pred}, prediction_score: {pred_score}, label: {label}")
           
     async def subscribe(self):
-        # ensure that the topic exists or create it if it doesn't
-        await self.ensign.ensure_topic_exists(self.topic)
         async for event in self.ensign.subscribe(self.topic):
             data = await self.decode(event)
             await self.generate_predictions(data)
