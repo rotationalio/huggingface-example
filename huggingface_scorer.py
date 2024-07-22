@@ -8,7 +8,6 @@ import pandas as pd
 
 from pyensign.events import Event
 from pyensign.ensign import Ensign
-from pyensign.api.v1beta1.ensign_pb2 import Nack
 
 from transformers import (
     DistilBertTokenizer,
@@ -89,20 +88,6 @@ class HuggingFaceScorer:
         )
         self.classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
 
-    async def decode(self, event):
-         """
-         Decode and ack the event.
-         """
-         try:
-             data = json.loads(event.data)
-         except json.JSONDecodeError:
-             print("Received invalid JSON in event payload:", event.data)
-             await event.nack(Nack.Code.UNKNOWN_TYPE)
-             return
-
-         await event.ack()
-         return data
-
     async def generate_predictions(self, data):
         text_list = []
         text = data["text"]
@@ -117,7 +102,7 @@ class HuggingFaceScorer:
           
     async def subscribe(self):
         async for event in self.ensign.subscribe(self.topic):
-            data = await self.decode(event)
+            data = json.loads(event.data)
             await self.generate_predictions(data)
 
 if __name__ == "__main__":
